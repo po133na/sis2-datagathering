@@ -99,7 +99,7 @@ def scrape_product(url):
     finally:
         driver.quit()
 
-def scrape_arbuz(max_products=120):
+def scrape_arbuz(max_products=1000):
     url = "https://arbuz.kz/ru/almaty/catalog/cat/225164-ovoshi_frukty_zelen#/"
     
     product_links = get_product_links(url, max_products)
@@ -113,9 +113,3 @@ def scrape_arbuz(max_products=120):
     
     logging.info(f'Collected Products: {len(all_data)}')
     return all_data
-
-if __name__ == "__main__":
-    products = scrape_arbuz(max_products=10)
-    print(f"Collected Products: {len(products)}")
-    if products:
-        print("Example:", products[0])
