@@ -1,0 +1,393 @@
+[2025-12-01T20:33:24.558+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: arbuz_pipeline.scrape scheduled__2025-11-30T10:00:00+00:00 [queued]>
+[2025-12-01T20:33:24.564+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: arbuz_pipeline.scrape scheduled__2025-11-30T10:00:00+00:00 [queued]>
+[2025-12-01T20:33:24.564+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 3
+[2025-12-01T20:33:24.572+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): scrape> on 2025-11-30 10:00:00+00:00
+[2025-12-01T20:33:24.580+0000] {standard_task_runner.py:60} INFO - Started process 56 to run task
+[2025-12-01T20:33:24.584+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'arbuz_pipeline', 'scrape', 'scheduled__2025-11-30T10:00:00+00:00', '--job-id', '6', '--raw', '--subdir', 'DAGS_FOLDER/***_dag.py', '--cfg-path', '/tmp/tmppw0aaaue']
+[2025-12-01T20:33:24.586+0000] {standard_task_runner.py:88} INFO - Job 6: Subtask scrape
+[2025-12-01T20:33:24.639+0000] {task_command.py:423} INFO - Running <TaskInstance: arbuz_pipeline.scrape scheduled__2025-11-30T10:00:00+00:00 [running]> on host 948d0a8926f9
+[2025-12-01T20:33:24.701+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='arbuz_pipeline' AIRFLOW_CTX_TASK_ID='scrape' AIRFLOW_CTX_EXECUTION_DATE='2025-11-30T10:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-11-30T10:00:00+00:00'
+[2025-12-01T20:33:24.702+0000] {airflow_dag.py:17} INFO - Starting scraping task...
+[2025-12-01T20:33:35.174+0000] {scraper.py:65} INFO - Collected 40 product links
+[2025-12-01T20:33:35.279+0000] {scraper.py:130} INFO - Scraped 0/40 products...
+[2025-12-01T20:33:40.165+0000] {scraper.py:117} ERROR - Error scraping https://arbuz.kz/ru/almaty/catalog/item/190079-kartofel_kg: Message: no such element: Unable to locate element: {"method":"css selector","selector":".product-card__title"}
+  (Session info: chrome=124.0.6367.78); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+#0 0xaaaad5e57d44 <unknown>
+#1 0xaaaad5b7e374 <unknown>
+#2 0xaaaad5bbb4e0 <unknown>
+#3 0xaaaad5bf8400 <unknown>
+#4 0xaaaad5bb14a4 <unknown>
+#5 0xaaaad5bb20e0 <unknown>
+#6 0xaaaad5e25ac0 <unknown>
+#7 0xaaaad5e28a64 <unknown>
+#8 0xaaaad5e28630 <unknown>
+#9 0xaaaad5e16d6c <unknown>
+#10 0xaaaad5e29128 <unknown>
+#11 0xaaaad5e01010 <unknown>
+#12 0xaaaad5e48550 <unknown>
+#13 0xaaaad5e48758 <unknown>
+#14 0xaaaad5e57250 <unknown>
+#15 0xffffbdccee58 <unknown>
+#16 0xffffbdd37f9c <unknown>
+
+[2025-12-01T20:33:48.805+0000] {scraper.py:117} ERROR - Error scraping https://arbuz.kz/ru/almaty/catalog/item/292906-kartofel_bebi_kg: Message: no such element: Unable to locate element: {"method":"css selector","selector":".product-card__title"}
+  (Session info: chrome=124.0.6367.78); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+#0 0xaaaacb947d44 <unknown>
+#1 0xaaaacb66e374 <unknown>
+#2 0xaaaacb6ab4e0 <unknown>
+#3 0xaaaacb6e8400 <unknown>
+#4 0xaaaacb6a14a4 <unknown>
+#5 0xaaaacb6a20e0 <unknown>
+#6 0xaaaacb915ac0 <unknown>
+#7 0xaaaacb918a64 <unknown>
+#8 0xaaaacb918630 <unknown>
+#9 0xaaaacb906d6c <unknown>
+#10 0xaaaacb919128 <unknown>
+#11 0xaaaacb8f1010 <unknown>
+#12 0xaaaacb938550 <unknown>
+#13 0xaaaacb938758 <unknown>
+#14 0xaaaacb947250 <unknown>
+#15 0xffff994cee58 <unknown>
+#16 0xffff99537f9c <unknown>
+
+[2025-12-01T20:33:57.902+0000] {scraper.py:117} ERROR - Error scraping https://arbuz.kz/ru/almaty/catalog/item/325494-kartofel_agro_fresh_ochishennyi_v_u_450_g: Message: no such element: Unable to locate element: {"method":"css selector","selector":".product-card__title"}
+  (Session info: chrome=124.0.6367.78); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+#0 0xaaaacdb27d44 <unknown>
+#1 0xaaaacd84e374 <unknown>
+#2 0xaaaacd88b4e0 <unknown>
+#3 0xaaaacd8c8400 <unknown>
+#4 0xaaaacd8814a4 <unknown>
+#5 0xaaaacd8820e0 <unknown>
+#6 0xaaaacdaf5ac0 <unknown>
+#7 0xaaaacdaf8a64 <unknown>
+#8 0xaaaacdaf8630 <unknown>
+#9 0xaaaacdae6d6c <unknown>
+#10 0xaaaacdaf9128 <unknown>
+#11 0xaaaacdad1010 <unknown>
+#12 0xaaaacdb18550 <unknown>
+#13 0xaaaacdb18758 <unknown>
+#14 0xaaaacdb27250 <unknown>
+#15 0xffffaa4cee58 <unknown>
+#16 0xffffaa537f9c <unknown>
+
+[2025-12-01T20:34:03.471+0000] {scraper.py:117} ERROR - Error scraping https://arbuz.kz/ru/almaty/catalog/item/270527-pomidory_kumato_500_g: Message: no such element: Unable to locate element: {"method":"css selector","selector":".product-card__title"}
+  (Session info: chrome=124.0.6367.78); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+#0 0xaaaadb667d44 <unknown>
+#1 0xaaaadb38e374 <unknown>
+#2 0xaaaadb3cb4e0 <unknown>
+#3 0xaaaadb408400 <unknown>
+#4 0xaaaadb3c14a4 <unknown>
+#5 0xaaaadb3c20e0 <unknown>
+#6 0xaaaadb635ac0 <unknown>
+#7 0xaaaadb638a64 <unknown>
+#8 0xaaaadb638630 <unknown>
+#9 0xaaaadb626d6c <unknown>
+#10 0xaaaadb639128 <unknown>
+#11 0xaaaadb611010 <unknown>
+#12 0xaaaadb658550 <unknown>
+#13 0xaaaadb658758 <unknown>
+#14 0xaaaadb667250 <unknown>
+#15 0xffff84ecee58 <unknown>
+#16 0xffff84f37f9c <unknown>
+
+[2025-12-01T20:34:10.269+0000] {scraper.py:117} ERROR - Error scraping https://arbuz.kz/ru/almaty/catalog/item/270209-pomidory_cherri_zheltye_250_g: Message: no such element: Unable to locate element: {"method":"css selector","selector":".product-card__title"}
+  (Session info: chrome=124.0.6367.78); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+#0 0xaaaaaefa7d44 <unknown>
+#1 0xaaaaaecce374 <unknown>
+#2 0xaaaaaed0b4e0 <unknown>
+#3 0xaaaaaed48400 <unknown>
+#4 0xaaaaaed014a4 <unknown>
+#5 0xaaaaaed020e0 <unknown>
+#6 0xaaaaaef75ac0 <unknown>
+#7 0xaaaaaef78a64 <unknown>
+#8 0xaaaaaef78630 <unknown>
+#9 0xaaaaaef66d6c <unknown>
+#10 0xaaaaaef79128 <unknown>
+#11 0xaaaaaef51010 <unknown>
+#12 0xaaaaaef98550 <unknown>
+#13 0xaaaaaef98758 <unknown>
+#14 0xaaaaaefa7250 <unknown>
+#15 0xffffa30cee58 <unknown>
+#16 0xffffa3137f9c <unknown>
+
+[2025-12-01T20:34:16.528+0000] {scraper.py:117} ERROR - Error scraping https://arbuz.kz/ru/almaty/catalog/item/193544-tomaty_cherri_zheltye_kg: Message: no such element: Unable to locate element: {"method":"css selector","selector":".product-card__title"}
+  (Session info: chrome=124.0.6367.78); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+#0 0xaaaac7727d44 <unknown>
+#1 0xaaaac744e374 <unknown>
+#2 0xaaaac748b4e0 <unknown>
+#3 0xaaaac74c8400 <unknown>
+#4 0xaaaac74814a4 <unknown>
+#5 0xaaaac74820e0 <unknown>
+#6 0xaaaac76f5ac0 <unknown>
+#7 0xaaaac76f8a64 <unknown>
+#8 0xaaaac76f8630 <unknown>
+#9 0xaaaac76e6d6c <unknown>
+#10 0xaaaac76f9128 <unknown>
+#11 0xaaaac76d1010 <unknown>
+#12 0xaaaac7718550 <unknown>
+#13 0xaaaac7718758 <unknown>
+#14 0xaaaac7727250 <unknown>
+#15 0xffff8c6cee58 <unknown>
+#16 0xffff8c737f9c <unknown>
+
+[2025-12-01T20:34:23.049+0000] {scraper.py:117} ERROR - Error scraping https://arbuz.kz/ru/almaty/catalog/item/292584-ogurcy_mirinda_fasovannye_kg: Message: no such element: Unable to locate element: {"method":"css selector","selector":".product-card__title"}
+  (Session info: chrome=124.0.6367.78); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+#0 0xaaaae9417d44 <unknown>
+#1 0xaaaae913e374 <unknown>
+#2 0xaaaae917b4e0 <unknown>
+#3 0xaaaae91b8400 <unknown>
+#4 0xaaaae91714a4 <unknown>
+#5 0xaaaae91720e0 <unknown>
+#6 0xaaaae93e5ac0 <unknown>
+#7 0xaaaae93e8a64 <unknown>
+#8 0xaaaae93e8630 <unknown>
+#9 0xaaaae93d6d6c <unknown>
+#10 0xaaaae93e9128 <unknown>
+#11 0xaaaae93c1010 <unknown>
+#12 0xaaaae9408550 <unknown>
+#13 0xaaaae9408758 <unknown>
+#14 0xaaaae9417250 <unknown>
+#15 0xffff7f2cee58 <unknown>
+#16 0xffff7f337f9c <unknown>
+
+[2025-12-01T20:34:29.609+0000] {scraper.py:117} ERROR - Error scraping https://arbuz.kz/ru/almaty/catalog/item/322157-ogurcy_rava_green_land_600_g: Message: no such element: Unable to locate element: {"method":"css selector","selector":".product-card__title"}
+  (Session info: chrome=124.0.6367.78); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+#0 0xaaaacc3a7d44 <unknown>
+#1 0xaaaacc0ce374 <unknown>
+#2 0xaaaacc10b4e0 <unknown>
+#3 0xaaaacc148400 <unknown>
+#4 0xaaaacc1014a4 <unknown>
+#5 0xaaaacc1020e0 <unknown>
+#6 0xaaaacc375ac0 <unknown>
+#7 0xaaaacc378a64 <unknown>
+#8 0xaaaacc378630 <unknown>
+#9 0xaaaacc366d6c <unknown>
+#10 0xaaaacc379128 <unknown>
+#11 0xaaaacc351010 <unknown>
+#12 0xaaaacc398550 <unknown>
+#13 0xaaaacc398758 <unknown>
+#14 0xaaaacc3a7250 <unknown>
+#15 0xffffa9ecee58 <unknown>
+#16 0xffffa9f37f9c <unknown>
+
+[2025-12-01T20:34:37.012+0000] {scraper.py:117} ERROR - Error scraping https://arbuz.kz/ru/almaty/catalog/item/262050-ogurcy_rava_kg: Message: no such element: Unable to locate element: {"method":"css selector","selector":".product-card__title"}
+  (Session info: chrome=124.0.6367.78); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+#0 0xaaaab4d17d44 <unknown>
+#1 0xaaaab4a3e374 <unknown>
+#2 0xaaaab4a7b4e0 <unknown>
+#3 0xaaaab4ab8400 <unknown>
+#4 0xaaaab4a714a4 <unknown>
+#5 0xaaaab4a720e0 <unknown>
+#6 0xaaaab4ce5ac0 <unknown>
+#7 0xaaaab4ce8a64 <unknown>
+#8 0xaaaab4ce8630 <unknown>
+#9 0xaaaab4cd6d6c <unknown>
+#10 0xaaaab4ce9128 <unknown>
+#11 0xaaaab4cc1010 <unknown>
+#12 0xaaaab4d08550 <unknown>
+#13 0xaaaab4d08758 <unknown>
+#14 0xaaaab4d17250 <unknown>
+#15 0xffff9bacee58 <unknown>
+#16 0xffff9bb37f9c <unknown>
+
+[2025-12-01T20:34:43.201+0000] {scraper.py:117} ERROR - Error scraping https://arbuz.kz/ru/almaty/catalog/item/242741-ogurcy_mirinda_kg: Message: no such element: Unable to locate element: {"method":"css selector","selector":".product-card__title"}
+  (Session info: chrome=124.0.6367.78); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+#0 0xaaaae1897d44 <unknown>
+#1 0xaaaae15be374 <unknown>
+#2 0xaaaae15fb4e0 <unknown>
+#3 0xaaaae1638400 <unknown>
+#4 0xaaaae15f14a4 <unknown>
+#5 0xaaaae15f20e0 <unknown>
+#6 0xaaaae1865ac0 <unknown>
+#7 0xaaaae1868a64 <unknown>
+#8 0xaaaae1868630 <unknown>
+#9 0xaaaae1856d6c <unknown>
+#10 0xaaaae1869128 <unknown>
+#11 0xaaaae1841010 <unknown>
+#12 0xaaaae1888550 <unknown>
+#13 0xaaaae1888758 <unknown>
+#14 0xaaaae1897250 <unknown>
+#15 0xffff9333ee58 <unknown>
+#16 0xffff933a7f9c <unknown>
+
+[2025-12-01T20:34:49.255+0000] {scraper.py:117} ERROR - Error scraping https://arbuz.kz/ru/almaty/catalog/item/242740-ogurcy_rava_kg: Message: no such element: Unable to locate element: {"method":"css selector","selector":".product-card__title"}
+  (Session info: chrome=124.0.6367.78); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+#0 0xaaaae8b67d44 <unknown>
+#1 0xaaaae888e374 <unknown>
+#2 0xaaaae88cb4e0 <unknown>
+#3 0xaaaae8908400 <unknown>
+#4 0xaaaae88c14a4 <unknown>
+#5 0xaaaae88c20e0 <unknown>
+#6 0xaaaae8b35ac0 <unknown>
+#7 0xaaaae8b38a64 <unknown>
+#8 0xaaaae8b38630 <unknown>
+#9 0xaaaae8b26d6c <unknown>
+#10 0xaaaae8b39128 <unknown>
+#11 0xaaaae8b11010 <unknown>
+#12 0xaaaae8b58550 <unknown>
+#13 0xaaaae8b58758 <unknown>
+#14 0xaaaae8b67250 <unknown>
+#15 0xffffb42cee58 <unknown>
+#16 0xffffb4337f9c <unknown>
+
+[2025-12-01T20:34:56.311+0000] {scraper.py:117} ERROR - Error scraping https://arbuz.kz/ru/almaty/catalog/item/292654-chesnochnye_strelki_kg: Message: no such element: Unable to locate element: {"method":"css selector","selector":".product-card__title"}
+  (Session info: chrome=124.0.6367.78); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+#0 0xaaaad94e7d44 <unknown>
+#1 0xaaaad920e374 <unknown>
+#2 0xaaaad924b4e0 <unknown>
+#3 0xaaaad9288400 <unknown>
+#4 0xaaaad92414a4 <unknown>
+#5 0xaaaad92420e0 <unknown>
+#6 0xaaaad94b5ac0 <unknown>
+#7 0xaaaad94b8a64 <unknown>
+#8 0xaaaad94b8630 <unknown>
+#9 0xaaaad94a6d6c <unknown>
+#10 0xaaaad94b9128 <unknown>
+#11 0xaaaad9491010 <unknown>
+#12 0xaaaad94d8550 <unknown>
+#13 0xaaaad94d8758 <unknown>
+#14 0xaaaad94e7250 <unknown>
+#15 0xffffb44cee58 <unknown>
+#16 0xffffb4537f9c <unknown>
+
+[2025-12-01T20:35:02.199+0000] {scraper.py:117} ERROR - Error scraping https://arbuz.kz/ru/almaty/catalog/item/330356-luk_repchatyi_kg: Message: no such element: Unable to locate element: {"method":"css selector","selector":".product-card__title"}
+  (Session info: chrome=124.0.6367.78); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+#0 0xaaaad5a47d44 <unknown>
+#1 0xaaaad576e374 <unknown>
+#2 0xaaaad57ab4e0 <unknown>
+#3 0xaaaad57e8400 <unknown>
+#4 0xaaaad57a14a4 <unknown>
+#5 0xaaaad57a20e0 <unknown>
+#6 0xaaaad5a15ac0 <unknown>
+#7 0xaaaad5a18a64 <unknown>
+#8 0xaaaad5a18630 <unknown>
+#9 0xaaaad5a06d6c <unknown>
+#10 0xaaaad5a19128 <unknown>
+#11 0xaaaad59f1010 <unknown>
+#12 0xaaaad5a38550 <unknown>
+#13 0xaaaad5a38758 <unknown>
+#14 0xaaaad5a47250 <unknown>
+#15 0xffff96f3ee58 <unknown>
+#16 0xffff96fa7f9c <unknown>
+
+[2025-12-01T20:35:11.855+0000] {scraper.py:117} ERROR - Error scraping https://arbuz.kz/ru/almaty/catalog/item/292571-luk_repchatyi_molodoi_setka_3_kg: Message: no such element: Unable to locate element: {"method":"css selector","selector":".product-card__title"}
+  (Session info: chrome=124.0.6367.78); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+#0 0xaaaab8557d44 <unknown>
+#1 0xaaaab827e374 <unknown>
+#2 0xaaaab82bb4e0 <unknown>
+#3 0xaaaab82f8400 <unknown>
+#4 0xaaaab82b14a4 <unknown>
+#5 0xaaaab82b20e0 <unknown>
+#6 0xaaaab8525ac0 <unknown>
+#7 0xaaaab8528a64 <unknown>
+#8 0xaaaab8528630 <unknown>
+#9 0xaaaab8516d6c <unknown>
+#10 0xaaaab8529128 <unknown>
+#11 0xaaaab8501010 <unknown>
+#12 0xaaaab8548550 <unknown>
+#13 0xaaaab8548758 <unknown>
+#14 0xaaaab8557250 <unknown>
+#15 0xffffba4cee58 <unknown>
+#16 0xffffba537f9c <unknown>
+
+[2025-12-01T20:35:20.146+0000] {scraper.py:117} ERROR - Error scraping https://arbuz.kz/ru/almaty/catalog/item/270130-luk_shalot_250_g: Message: no such element: Unable to locate element: {"method":"css selector","selector":".product-card__title"}
+  (Session info: chrome=124.0.6367.78); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+#0 0xaaaae0e87d44 <unknown>
+#1 0xaaaae0bae374 <unknown>
+#2 0xaaaae0beb4e0 <unknown>
+#3 0xaaaae0c28400 <unknown>
+#4 0xaaaae0be14a4 <unknown>
+#5 0xaaaae0be20e0 <unknown>
+#6 0xaaaae0e55ac0 <unknown>
+#7 0xaaaae0e58a64 <unknown>
+#8 0xaaaae0e58630 <unknown>
+#9 0xaaaae0e46d6c <unknown>
+#10 0xaaaae0e59128 <unknown>
+#11 0xaaaae0e31010 <unknown>
+#12 0xaaaae0e78550 <unknown>
+#13 0xaaaae0e78758 <unknown>
+#14 0xaaaae0e87250 <unknown>
+#15 0xffff922cee58 <unknown>
+#16 0xffff92337f9c <unknown>
+
+[2025-12-01T20:35:27.142+0000] {scraper.py:117} ERROR - Error scraping https://arbuz.kz/ru/almaty/catalog/item/147326-luk_belyi_kazahstan_kg: Message: no such element: Unable to locate element: {"method":"css selector","selector":".product-card__title"}
+  (Session info: chrome=124.0.6367.78); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+#0 0xaaaaae197d44 <unknown>
+#1 0xaaaaadebe374 <unknown>
+#2 0xaaaaadefb4e0 <unknown>
+#3 0xaaaaadf38400 <unknown>
+#4 0xaaaaadef14a4 <unknown>
+#5 0xaaaaadef20e0 <unknown>
+#6 0xaaaaae165ac0 <unknown>
+#7 0xaaaaae168a64 <unknown>
+#8 0xaaaaae168630 <unknown>
+#9 0xaaaaae156d6c <unknown>
+#10 0xaaaaae169128 <unknown>
+#11 0xaaaaae141010 <unknown>
+#12 0xaaaaae188550 <unknown>
+#13 0xaaaaae188758 <unknown>
+#14 0xaaaaae197250 <unknown>
+#15 0xffffb62cee58 <unknown>
+#16 0xffffb6337f9c <unknown>
+
+[2025-12-01T20:35:41.357+0000] {scraper.py:117} ERROR - Error scraping https://arbuz.kz/ru/almaty/catalog/item/292580-morkov_v_setke_kg: Message: no such element: Unable to locate element: {"method":"css selector","selector":".product-card__title"}
+  (Session info: chrome=124.0.6367.78); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+#0 0xaaaaac3d7d44 <unknown>
+#1 0xaaaaac0fe374 <unknown>
+#2 0xaaaaac13b4e0 <unknown>
+#3 0xaaaaac178400 <unknown>
+#4 0xaaaaac1314a4 <unknown>
+#5 0xaaaaac1320e0 <unknown>
+#6 0xaaaaac3a5ac0 <unknown>
+#7 0xaaaaac3a8a64 <unknown>
+#8 0xaaaaac3a8630 <unknown>
+#9 0xaaaaac396d6c <unknown>
+#10 0xaaaaac3a9128 <unknown>
+#11 0xaaaaac381010 <unknown>
+#12 0xaaaaac3c8550 <unknown>
+#13 0xaaaaac3c8758 <unknown>
+#14 0xaaaaac3d7250 <unknown>
+#15 0xffffa530ee58 <unknown>
+#16 0xffffa5377f9c <unknown>
+
+[2025-12-01T20:35:42.699+0000] {local_task_job_runner.py:302} WARNING - State of this instance has been externally set to failed. Terminating instance.
+[2025-12-01T20:35:42.803+0000] {process_utils.py:131} INFO - Sending 15 to group 56. PIDs of all processes in the group: [56]
+[2025-12-01T20:35:42.805+0000] {process_utils.py:86} INFO - Sending the signal 15 to group 56
+[2025-12-01T20:35:42.808+0000] {taskinstance.py:2450} ERROR - Received SIGTERM. Terminating subprocesses.
+[2025-12-01T20:35:42.815+0000] {scraper.py:33} ERROR - Cannot connect to remote selenium at http://selenium:4444/wd/hub: Task received SIGTERM signal
+[2025-12-01T20:35:43.295+0000] {process_utils.py:79} INFO - Process psutil.Process(pid=56, status='terminated', exitcode=0, started='20:33:24') (56) terminated with exit code 0
+[2025-12-01T21:10:38.979+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: arbuz_pipeline.scrape scheduled__2025-11-30T10:00:00+00:00 [queued]>
+[2025-12-01T21:10:38.991+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: arbuz_pipeline.scrape scheduled__2025-11-30T10:00:00+00:00 [queued]>
+[2025-12-01T21:10:38.992+0000] {taskinstance.py:2171} INFO - Starting attempt 1 of 3
+[2025-12-01T21:10:39.017+0000] {taskinstance.py:2192} INFO - Executing <Task(PythonOperator): scrape> on 2025-11-30 10:00:00+00:00
+[2025-12-01T21:10:39.043+0000] {standard_task_runner.py:60} INFO - Started process 106 to run task
+[2025-12-01T21:10:39.051+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'arbuz_pipeline', 'scrape', 'scheduled__2025-11-30T10:00:00+00:00', '--job-id', '2', '--raw', '--subdir', 'DAGS_FOLDER/***_dag.py', '--cfg-path', '/tmp/tmp_v71rqv8']
+[2025-12-01T21:10:39.063+0000] {standard_task_runner.py:88} INFO - Job 2: Subtask scrape
+[2025-12-01T21:10:39.174+0000] {task_command.py:423} INFO - Running <TaskInstance: arbuz_pipeline.scrape scheduled__2025-11-30T10:00:00+00:00 [running]> on host ef82a04a9e3d
+[2025-12-01T21:10:39.342+0000] {taskinstance.py:2481} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='arbuz_pipeline' AIRFLOW_CTX_TASK_ID='scrape' AIRFLOW_CTX_EXECUTION_DATE='2025-11-30T10:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-11-30T10:00:00+00:00'
+[2025-12-01T21:10:39.347+0000] {airflow_dag.py:17} INFO - Starting scraping task...
+[2025-12-01T21:10:39.348+0000] {scraper.py:177} INFO - 🚀 Starting Arbuz.kz scraping (max 1000 products)
+[2025-12-01T21:11:03.869+0000] {scraper.py:82} INFO - Collected 40 product links
+[2025-12-01T21:11:03.881+0000] {scraper.py:193} INFO - Progress: 0/40 products scraped...
+[2025-12-01T21:13:13.864+0000] {local_task_job_runner.py:121} ERROR - Received SIGTERM. Terminating subprocesses
+[2025-12-01T21:13:13.958+0000] {process_utils.py:131} INFO - Sending 15 to group 106. PIDs of all processes in the group: [106]
+[2025-12-01T21:13:13.962+0000] {process_utils.py:86} INFO - Sending the signal 15 to group 106
+[2025-12-01T21:13:13.991+0000] {taskinstance.py:2451} ERROR - Received SIGTERM. Terminating subprocesses.
+[2025-12-01T21:13:14.046+0000] {scraper.py:168} ERROR - Error scraping https://arbuz.kz/ru/almaty/catalog/item/292584-ogurcy_mirinda_fasovannye_kg: Task received SIGTERM signal

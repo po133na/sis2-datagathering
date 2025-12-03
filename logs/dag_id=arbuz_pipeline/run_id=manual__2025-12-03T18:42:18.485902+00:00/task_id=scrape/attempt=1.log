@@ -1,0 +1,32 @@
+[2025-12-03T18:42:21.614+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: arbuz_pipeline.scrape manual__2025-12-03T18:42:18.485902+00:00 [queued]>
+[2025-12-03T18:42:21.618+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: arbuz_pipeline.scrape manual__2025-12-03T18:42:18.485902+00:00 [queued]>
+[2025-12-03T18:42:21.618+0000] {taskinstance.py:2171} INFO - Starting attempt 1 of 3
+[2025-12-03T18:42:21.625+0000] {taskinstance.py:2192} INFO - Executing <Task(PythonOperator): scrape> on 2025-12-03 18:42:18.485902+00:00
+[2025-12-03T18:42:21.629+0000] {standard_task_runner.py:60} INFO - Started process 50 to run task
+[2025-12-03T18:42:21.633+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'arbuz_pipeline', 'scrape', 'manual__2025-12-03T18:42:18.485902+00:00', '--job-id', '6', '--raw', '--subdir', 'DAGS_FOLDER/***_dag.py', '--cfg-path', '/tmp/tmp8f1brlwe']
+[2025-12-03T18:42:21.635+0000] {standard_task_runner.py:88} INFO - Job 6: Subtask scrape
+[2025-12-03T18:42:21.660+0000] {task_command.py:423} INFO - Running <TaskInstance: arbuz_pipeline.scrape manual__2025-12-03T18:42:18.485902+00:00 [running]> on host dc5fbac3e839
+[2025-12-03T18:42:21.707+0000] {taskinstance.py:2481} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='arbuz_pipeline' AIRFLOW_CTX_TASK_ID='scrape' AIRFLOW_CTX_EXECUTION_DATE='2025-12-03T18:42:18.485902+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-03T18:42:18.485902+00:00'
+[2025-12-03T18:42:21.708+0000] {airflow_dag.py:23} INFO - 🚀 Starting scraping task...
+[2025-12-03T18:42:21.708+0000] {scraper.py:17} INFO - 🚀 Starting Arbuz.kz scraping (max 100 products)
+[2025-12-03T18:42:22.360+0000] {scraper.py:104} INFO - Opening URL: https://arbuz.kz/ru/almaty/catalog/cat/225164-ovoshi_frukty_zelen#/
+[2025-12-03T18:42:24.193+0000] {scraper.py:111} INFO - Page body loaded
+[2025-12-03T18:42:29.247+0000] {scraper.py:130} INFO - Found 40 products with selector: .product-card__link
+[2025-12-03T18:42:29.278+0000] {scraper.py:157} INFO - DEBUG href: /ru/almaty/catalog/item/320555-mandariny_marokko_kg?ref=catalog
+[2025-12-03T18:42:29.283+0000] {scraper.py:157} INFO - DEBUG href: /ru/almaty/catalog/item/19445-banany_kg?ref=catalog
+[2025-12-03T18:42:29.287+0000] {scraper.py:157} INFO - DEBUG href: /ru/almaty/catalog/item/237984-avokado_hass_kolumbiya_sht?ref=catalog
+[2025-12-03T18:43:29.542+0000] {scraper.py:174} INFO - No more products to load: Timeout 60000ms exceeded.
+[2025-12-03T18:43:29.544+0000] {scraper.py:177} INFO - Collected 40 product links
+[2025-12-03T18:43:29.545+0000] {scraper.py:75} INFO - Progress: 0/40 products scraped...
+[2025-12-03T18:44:09.148+0000] {scraper.py:75} INFO - Progress: 10/40 products scraped...
+[2025-12-03T18:44:55.018+0000] {scraper.py:75} INFO - Progress: 20/40 products scraped...
+[2025-12-03T18:45:38.651+0000] {scraper.py:75} INFO - Progress: 30/40 products scraped...
+[2025-12-03T18:45:45.697+0000] {scraper.py:217} WARNING - No product name found for https://arbuz.kz/ru/almaty/catalog/item/230404-sparzha_zel_naya_150_g?ref=catalog
+[2025-12-03T18:45:48.831+0000] {scraper.py:217} WARNING - No product name found for https://arbuz.kz/ru/almaty/catalog/item/322682-apelsin_krasnyi_kg?ref=catalog
+[2025-12-03T18:46:15.445+0000] {scraper.py:217} WARNING - No product name found for https://arbuz.kz/ru/almaty/catalog/item/262337-tomaty_nac_agro_kumato_500_g?ref=catalog
+[2025-12-03T18:46:16.848+0000] {scraper.py:95} INFO - ✅ Successfully scraped 37 products
+[2025-12-03T18:46:16.899+0000] {airflow_dag.py:33} INFO - ✅ Scraped 37 products
+[2025-12-03T18:46:16.900+0000] {python.py:201} INFO - Done. Returned value was: 37
+[2025-12-03T18:46:16.915+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=arbuz_pipeline, task_id=scrape, execution_date=20251203T184218, start_date=20251203T184221, end_date=20251203T184616
+[2025-12-03T18:46:16.949+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-12-03T18:46:16.980+0000] {taskinstance.py:3281} INFO - 1 downstream tasks scheduled from follow-on schedule check
