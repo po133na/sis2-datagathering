@@ -1,4 +1,3 @@
-# docker-compose.yaml
 version: '3.8'
 
 x-airflow-common: &airflow-common
@@ -11,7 +10,7 @@ x-airflow-common: &airflow-common
     PYTHONPATH: /opt/airflow/src
     AIRFLOW__CORE__DAGBAG_IMPORT_TIMEOUT: 120
     AIRFLOW__CORE__DAG_FILE_PROCESSOR_TIMEOUT: 300
-    # Playwright настройки
+
     PLAYWRIGHT_BROWSERS_PATH: /home/airflow/.cache/ms-playwright
   volumes: &airflow-volumes
     - ./dags:/opt/airflow/dags
@@ -69,7 +68,7 @@ services:
       interval: 30s
       timeout: 10s
       retries: 5
-    # Увеличиваем лимиты памяти для webserver
+      
     deploy:
       resources:
         limits:

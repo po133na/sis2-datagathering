@@ -1,4 +1,3 @@
-# src/scraper.py
 import logging
 import random
 import time
@@ -76,14 +75,13 @@ def scrape_arbuz(max_products: int = 50) -> list:
                 logger.info(f"found {len(links)} links in {cat_name}")
                 all_links.extend(links)
                 
-                # Небольшая пауза между категориями
                 time.sleep(random.uniform(1, 2))
             
             all_links = list(dict.fromkeys(all_links))[:max_products]
             logger.info(f"total unique links: {len(all_links)}")
             
             if not all_links:
-                logger.warning("no product links found!")
+                logger.warning("no product links found")
                 return results
             
             for i, link in enumerate(all_links):
@@ -209,7 +207,7 @@ def get_product_links(page, url: str, max_products: int = 50) -> list:
                 logger.info(f"error loading more products: {e}")
                 break
                 
-        logger.info(f"collected {len(links)} product links")
+        logger.info(f"collected product links: {len(links)} ")
         return links
         
     except PlaywrightTimeout as e:
@@ -245,7 +243,7 @@ def scrape_product(page, url: str) -> dict | None:
             logger.warning(f"no products found for {url}")
             return None
         
-        # Цена
+        
         price = get_price(page)
         
         category = "Unknown"

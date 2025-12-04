@@ -1,4 +1,3 @@
-# dags/arbuz_dag.py
 from datetime import datetime, timedelta
 from airflow import DAG
 from airflow.operators.python import PythonOperator
@@ -26,7 +25,7 @@ def scrape_task(**context) -> int:
         if not products:
             raise ValueError("no products scraped")
         
-        # Сохраняем данные в XCom
+        
         context['task_instance'].xcom_push(key='raw_data', value=products)
         logger.info(f"scraped {len(products)} products")
         return len(products)

@@ -1,4 +1,3 @@
-# Core
 apache-airflow==2.8.0
 pandas==2.1.3
 

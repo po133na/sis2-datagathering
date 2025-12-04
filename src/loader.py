@@ -26,10 +26,10 @@ def load_data(df, db_path='data/parsing.db'):
             ))
         
         conn.commit()
-        logging.info(f"Загружено {len(df)} записей")
+        logging.info(f"Loaded records: {len(df)}")
         return len(df)
     except Exception as e:
-        logging.error(f"Ошибка: {e}")
+        logging.error(f"error: {e}")
         return 0
     finally:
         conn.close()

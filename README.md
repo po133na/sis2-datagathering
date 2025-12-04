@@ -3,31 +3,29 @@ SIS 2 repository
 
 # Arbuz.kz Scraper & ETL Pipeline with Airflow
 
-This project automates data extraction from [Arbuz.kz](https://arbuz.kz/), cleans the extracted product information, and loads it into an SQLite database. Airflow is used to orchestrate the full ETL workflow.
+This repository contains an automated ETL pipeline for collecting product data from **Arbuz.kz**, cleaning it, and loading it into an SQLite database.
+The project uses **Playwright** for scraping, **Pandas** for cleaning, **SQLite** for storage, and **Apache Airflow** for orchestration.
 
 ---
-## Functionality Overview
 
-✔ Scrape product data (name, price, category, brand, availability, URL)  
-✔ Clean and validate scraped data  
-✔ Store results in SQLite database  
-✔ Automated scheduling using Airflow  
-
----
 # Table of Contents
-1. [Project Description](#project-description)
-2. [How It Works](#how-it-works)
-3. [Installation & Setup](#installation--setup)
-4. [How to Run Scraping](#how-to-run-scraping)
-5. [Running Airflow](#running-airflow)
-6. [Database Integration](#database-integration)
-7. [Expected Output](#expected-output)
-8. [Project Members](#project-members)
-9. [Technical Topics](#technical-topics)
+
+1. [Project Overview](#project-overview)
+2. [Features](#features)
+3. [How It Works](#how-it-works)
+4. [Installation & Setup](#installation--setup)
+5. [Running the Scraper](#running-the-scraper)
+6. [Database Initialization](#database-initialization)
+7. [Airflow Pipeline](#airflow-pipeline)
+8. [Database Schema](#database-schema)
+9. [Expected Output](#expected-output)
+10. [Project Members](#project-members)
+
 ---
 
-## Project Description
-This application automatically gathers product details from the **Vegetables & Fruits category** on Arbuz.kz, including:
+## Project Overview
+
+The ETL pipeline automatically gathers product data from several categories on **Arbuz.kz**, including:
 
 - Name  
 - Price (₸ — Tenge)  
@@ -35,43 +33,73 @@ This application automatically gathers product details from the **Vegetables & F
 - Brand (if available)  
 - URL  
 - Availability  
-- Date & time of parsing  
+- Scrape timestamp
 
-The pipeline applies intelligent cleaning rules to remove duplicates, fix formatting, ensure correct data types, and only load valid records.
+The pipeline:
 
-The final results are stored in a structured SQLite database for analysis.
+1. **Scrapes** product URLs and detailed product data from Arbuz.kz
+2. **Cleans** the dataset using custom rules
+3. **Loads** data into an SQLite database
+4. **Schedules** daily execution via Airflow
+
+---
+
+## Features
+
+✔ Automated scraping with **Playwright**
+✔ Multi-category product extraction
+✔ Data cleaning with Pandas
+✔ SQLite storage
+✔ Airflow DAG for full ETL pipeline
+✔ Logging on every stage
 
 ---
 
 ## How It Works
 
 | Stage | Description |
-|-------|------------|
-| Scraping | Selenium bot collects product links and product data |
-| Cleaning | Invalid prices removed, missing names dropped, duplicates removed |
-| Loading | Data inserted into `products` table in SQLite DB |
-| Scheduling | Airflow automates daily scheduled scraping |
+| -------------- | ---------------------------------------------------------------------- |
+| Scraping  | collects product links & product details using Playwright |
+| Cleaning   | removes duplicates, invalid entries, incorrect formats    |
+| Loading    | inserts data into SQLite (`products` table)                |
+| Scheduling | Airflow executes the ETL every day at 04:00 (DAG: `arbuz_pipeline`)    |
+
+### Scraper Logic
+
+* Visits **7 categories** (fruits, vegetables, greens, mushrooms, berries, fresh juices)
+* Automatically scrolls, clicks “Load More”, and extracts all product cards
+* Bypasses bot detection (user-agent override, disabling webdriver)
+* Scrapes product details: name, price, category, brand, availability
 
 ---
 
 ## Installation & Setup
 
+### Install dependencies
+
 ```bash
 pip install -r requirements.txt
-````
+```
 
-Chrome WebDriver must be installed and match your Chrome version.
+### Install Playwright drivers
+
+```bash
+playwright install
+playwright install chromium
+```
 
 ---
 
-## How to Run Scraping
+## Running the Scraper
+
+### Option 1 — Run manually
 
 ```python
 from scraper import scrape_arbuz
 from cleaner import clean_data
 from loader import load_data
 
-raw = scrape_arbuz(max_products=1000)
+raw = scrape_arbuz(max_products=150)
 cleaned = clean_data(raw)
 load_data(cleaned)
 ```
@@ -90,15 +118,37 @@ data/parsing.db
 
 ---
 
-## Running Airflow
+## Database Initialization
 
-Initialize:
+Before the first scrape, create the database and table:
+
+```bash
+python init_db.py
+```
+
+This creates:
+
+```
+data/parsing.db
+```
+
+With table:
+
+```
+products
+```
+
+---
+
+## Airflow Pipeline
+
+### Initialize Airflow
 
 ```bash
 airflow db init
 ```
 
-Create admin user:
+### Create admin user:
 
 ```bash
 airflow users create \
@@ -109,7 +159,7 @@ airflow users create \
   --email admin@example.com
 ```
 
-Start services:
+### Start services:
 
 ```bash
 airflow webserver -p 8080
@@ -119,23 +169,23 @@ airflow scheduler
 Open UI:
 [http://localhost:8080/](http://localhost:8080/)
 
-Enable DAG `arbuz_scraper_dag` (if your DAG file is in `dags/` folder)
-
 ---
 
-## Database Integration
+## Database Schema
 
-Products are loaded into `products` table with fields:
+`init_db.py` creates the following table:
 
-| Column       | Type    | Description                     |
-| ------------ | ------- | ------------------------------- |
-| product_name | TEXT    | Clean product name              |
-| product_url  | TEXT    | Unique product page URL         |
-| price        | INTEGER | Product price                   |
-| category     | TEXT    | Product category name           |
-| brand        | TEXT    | Product brand                   |
-| available    | INTEGER | 1 — available, 0 — out of stock |
-| parse_date   | TEXT    | Timestamp of scraping           |
+| Column       | Type      | Description                         |
+| ------------ | --------- | ----------------------------------- |
+| id           | INTEGER   | Auto-increment primary key          |
+| product_name | TEXT      | Clean product name                  |
+| product_url  | TEXT      | Product page URL (unique)           |
+| price        | INTEGER   | Price in Tenge                      |
+| category     | TEXT      | Product category                    |
+| brand        | TEXT      | Extracted brand (if exists)         |
+| available    | INTEGER   | 1 = in stock, 0 = unavailable       |
+| parse_date   | TEXT      | ISO timestamp                       |
+| created_at   | TIMESTAMP | Auto-generated record creation time |
 
 ---
 
@@ -144,9 +194,11 @@ Products are loaded into `products` table with fields:
 Example logs:
 
 ```
-Initial quantity(Before Cleaning): 1200
-After Cleaning: 950
-Loaded 950 records
+scraping started from 7 categories
+found 240 links in Фрукты
+scraped total 150 products
+cleaned rows: 138
+Loaded records: 138
 ```
 
 Example record:
@@ -158,7 +210,7 @@ Example record:
   "category": "Фрукты",
   "brand": "Unknown",
   "available": true,
-  "product_url": "...",
+  "product_url": "https://arbuz.kz/...",
   "parse_date": "2025-01-15T14:32:10"
 }
 ```
@@ -173,17 +225,5 @@ Example record:
 | Suanbekova Aisha | 22B030589 | [Suanbekova](https://github.com/Sunbekova) |
 ---
 
-## Technical Topics
 
-| Technical Stack |
-|----------------|
-| Selenium WebDriver |
-| ETL Pipeline |
-| Apache Airflow |
-| Data Cleaning with Pandas |
-| SQLite Database |
-| Exception Handling & Logging |
-| Headless Browser Automation |
-
----
-[Back to Top](#arbuz.kz-scraper-&-etl-pipeline-with-airflow)
+[Back to Top](#arbuz.kz-scraper--etl-pipeline-with-airflow)

@@ -6,7 +6,6 @@ os.makedirs('data', exist_ok=True)
 conn = sqlite3.connect('data/parsing.db')
 cursor = conn.cursor()
 
-# Создаём таблицу
 cursor.execute("""
     CREATE TABLE IF NOT EXISTS products (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -25,5 +24,5 @@ cursor.execute("""
 conn.commit()
 conn.close()
 
-print("✅ База данных и таблица успешно созданы!")
-print("📁 Файл: data/parsing.db")
+print("bd and table successfully created")
+print("File: data/parsing.db")
